@@ -7,6 +7,7 @@ public class Period implements Comparable<Period> {
     private final Day day;
     private final long from;
     private final long to;
+    private final int workedHours;
 
     public Period(String block) {
         String day = block.substring(0, 2);
@@ -14,11 +15,17 @@ public class Period implements Comparable<Period> {
         String from = hours[0].substring(2);
         String to = hours[1];
         this.day = Day.valueOf(day);
-        this.from = parseHour(from);
-        this.to = parseHour(to);
+        this.from = parseMilitaryHour(from);
+        this.to = parseMilitaryHour(to);
+        this.workedHours = hour(to) - hour(from);
     }
 
-    private long parseHour(String hour) {
+    private int hour(String hour) {
+        String value = hour.substring(0, 2);
+        return Integer.parseInt(value) == 0 ? 24 : Integer.parseInt(value);
+    }
+
+    private long parseMilitaryHour(String hour) {
         String value = hour.replace(":", "");
         return Long.parseLong(value);
     }
@@ -33,6 +40,10 @@ public class Period implements Comparable<Period> {
 
     public long to() {
         return to;
+    }
+
+    public int workedHours() {
+        return workedHours;
     }
 
     @Override

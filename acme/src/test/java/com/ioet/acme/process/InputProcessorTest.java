@@ -1,7 +1,6 @@
-package com.ioet.acme;
+package com.ioet.acme.process;
 
 import com.ioet.acme.data.Period;
-import com.ioet.acme.process.InputProcessor;
 import org.junit.Test;
 
 import java.util.List;
