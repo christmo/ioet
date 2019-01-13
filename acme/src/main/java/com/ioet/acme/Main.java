@@ -7,6 +7,11 @@ import com.ioet.acme.process.CasesFile;
 import java.io.File;
 import java.util.Objects;
 
+/**
+ * Main class for execute the program.
+ *
+ * @author christmo
+ */
 public class Main {
 
     public static void main(String[] args) {
