@@ -6,11 +6,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InputProcessor {
+public class InputProcess {
 
     private final String[] portions;
 
-    public InputProcessor(String input) {
+    public InputProcess(String input) {
         this.portions = input.split("=");
         if (portions.length != 2) {
             throw new RuntimeException("Input format does not match, we need NAME=BLOCK,BLOCK");
@@ -25,7 +25,7 @@ public class InputProcessor {
         String blockLine = portions[1];
         String[] blocks = blockLine.split(",");
         return Arrays.stream(blocks)
-                .map(InputProcessor::parser)
+                .map(InputProcess::parser)
                 .collect(Collectors.toList());
     }
 

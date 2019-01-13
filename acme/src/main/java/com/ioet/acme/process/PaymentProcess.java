@@ -14,7 +14,7 @@ public class PaymentProcess {
     }
 
     public String calculate() {
-        InputProcessor processor = new InputProcessor(line);
+        InputProcess processor = new InputProcess(line);
         String name = processor.name();
         List<Period> periods = processor.periods();
         double amount = 0;

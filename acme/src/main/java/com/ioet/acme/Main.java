@@ -1,27 +1,32 @@
 package com.ioet.acme;
 
-import com.ioet.acme.chain.PaymentChain;
-import com.ioet.acme.data.Period;
-import com.ioet.acme.process.InputProcessor;
+import com.ioet.acme.branding.ACMEBranding;
+import com.ioet.acme.branding.Branding;
+import com.ioet.acme.process.CasesFile;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Stream;
+import java.io.File;
+import java.util.Objects;
 
 public class Main {
 
     public static void main(String[] args) {
-        //String fileName = "/Users/christmo/IdeaProjects/ioet/";
-        //try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
-        //    stream.forEach(System.out::println);
-        //} catch (IOException e) {
-        //    System.err.println("Error Reading the file: ");
-        //}
-        String line = "ASTRID=MO10:00-12:00,TH12:00-14:00,SU20:00-21:00";
+        File file = getFile(args);
 
+        Branding branding = new ACMEBranding();
+        branding.banner();
+        branding.source(file);
+        branding.printCases(new CasesFile(file));
+    }
 
+    private static File getFile(String[] args) {
+        File file;
+        if (args.length == 1) {
+            file = new File(args[0]);
+        } else {
+            ClassLoader classLoader = Main.class.getClassLoader();
+            file = new File(Objects.requireNonNull(classLoader.getResource("test-file.txt")).getFile());
+        }
+        return file;
     }
 
 }
