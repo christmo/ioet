@@ -63,7 +63,7 @@ java -jar ioet/acme/target/acme-1.0-SNAPSHOT.jar [filePath]
 ```
 
 # Default Execution
-Is loaded a default file test, you can run it with this command:
+Is loaded a default test file, you can run it with this command:
 ```bash
 > java -jar ioet/acme/target/acme-1.0-SNAPSHOT.jar
 |***********************************************************************************|
