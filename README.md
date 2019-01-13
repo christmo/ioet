@@ -1,3 +1,11 @@
+# Design
+
+In this exercise I have used a Chain of Responsibility to manage the variability of days and periods of time,
+all all objects in the design are inmutables because I prevent side effect in the future, I have used interface
+to decouple the branding in the console it is easy to change to another branding. The process is simple I have
+read the file in lines and I took the data lines with a regular expression and split the lines in base a 
+separation tokens. 
+
 # Exercise
 IOET Exercise, Software for payment work hourly for ACME
 
