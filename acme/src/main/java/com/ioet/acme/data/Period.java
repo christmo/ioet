@@ -14,10 +14,19 @@ public class Period implements Comparable<Period> {
         String[] hours = block.split("-");
         String from = hours[0].substring(2);
         String to = hours[1];
-        this.day = Day.valueOf(day);
+        this.day = getDay(day);
         this.from = parseMilitaryHour(from);
         this.to = parseMilitaryHour(to);
         this.workedHours = hour(to) - hour(from);
+    }
+
+    private Day getDay(String day) {
+        try {
+            return Day.valueOf(day);
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error loading day, it is not supported " + e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 
     private int hour(String hour) {
